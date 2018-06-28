@@ -13,20 +13,6 @@ namespace PropertySetterTest
             {
                 _networkCredential = Storage.NetworkCredential;
 
-                if (!string.IsNullOrEmpty(_networkCredential?.Password))
-                {
-                    try
-                    {
-                        _networkCredential.Password = RemoveCharacters(_networkCredential.Password);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-
-                        ClearPassword();
-                    }
-                }
-
                 return _networkCredential;
             }
             protected set
@@ -46,32 +32,8 @@ namespace PropertySetterTest
                 // 9) Try to wipe the confused look off your face
                 _networkCredential = value;
 
-                if (!string.IsNullOrEmpty(_networkCredential?.Password))
-                {
-                    try
-                    {
-                        _networkCredential.Password = AddCharacters(_networkCredential.Password);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-                }
-
                 Storage.NetworkCredential = _networkCredential;
             }
-        }
-
-        private string AddCharacters(string str)
-        {
-            return $"{str}XXX";
-        }
-
-        private string RemoveCharacters(string str)
-        {
-            var charactersToRemove = new[] { 'X' };
-
-            return str.TrimEnd(charactersToRemove);
         }
 
         public async Task<bool> Run(NetworkCredential networkCredential = null)
@@ -90,11 +52,6 @@ namespace PropertySetterTest
                                !string.IsNullOrEmpty(NetworkCredential?.Password);
 
             return isSuccessful;
-        }
-
-        public void ClearPassword()
-        {
-            NetworkCredential = new NetworkCredential(_networkCredential.UserName, string.Empty);
         }
     }
 }
