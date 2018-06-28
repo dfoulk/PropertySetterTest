@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Test
+namespace PropertySetterTest
 {
     public static class Storage
     {

@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Test
+namespace PropertySetterTest
 {
     public class Parent
     {
