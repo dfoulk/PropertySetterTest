@@ -30,18 +30,11 @@ namespace PropertySetterTest
 
         public async Task<bool> Run()
         {
-            var str = "Test";
-
             await Task.Delay(TimeSpan.FromSeconds(1));
 
-            var isValid = !string.IsNullOrEmpty(str);
+            String = "Test";
 
-            if (isValid)
-                String = str;
-
-            var isSuccessful = !string.IsNullOrEmpty(String);
-
-            return isSuccessful;
+            return !string.IsNullOrEmpty(String);
         }
     }
 }

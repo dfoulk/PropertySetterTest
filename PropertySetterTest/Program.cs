@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace PropertySetterTest
 {
@@ -11,12 +10,7 @@ namespace PropertySetterTest
         {
             Test = new Test();
 
-            RunTest().Wait();
-        }
-
-        private static async Task RunTest()
-        {
-            var result = await Test.Run();
+            var result = Test.Run().Result;
 
             Console.WriteLine($"Test Result: {result}");
 
