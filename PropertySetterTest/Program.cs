@@ -6,11 +6,11 @@ namespace PropertySetterTest
 {
     internal class Program
     {
-        public static Child Child { get; set; }
+        public static Test Test { get; set; }
 
         private static void Main(string[] args)
         {
-            Child = new Child();
+            Test = new Test();
 
             RunTest().Wait();
         }
@@ -19,7 +19,7 @@ namespace PropertySetterTest
         {
             var networkCredential = new NetworkCredential("TestUser", "TestPassword");
 
-            var result = await Child.Test(networkCredential);
+            var result = await Test.Run(networkCredential);
 
             Console.WriteLine($"Test Result: {result}");
 

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace PropertySetterTest
 {
-    public class Child : Parent
+    public class Test
     {
         private NetworkCredential _networkCredential;
-        public override NetworkCredential NetworkCredential
+        public NetworkCredential NetworkCredential
         {
             get
             {
@@ -71,6 +72,24 @@ namespace PropertySetterTest
             var charactersToRemove = new[] { 'X' };
 
             return str.TrimEnd(charactersToRemove);
+        }
+
+        public async Task<bool> Run(NetworkCredential networkCredential = null)
+        {
+            networkCredential = networkCredential ?? NetworkCredential;
+
+            await Task.Delay(TimeSpan.FromSeconds(1));
+
+            var isValid = !string.IsNullOrEmpty(networkCredential?.UserName) &&
+                          !string.IsNullOrEmpty(networkCredential?.Password);
+
+            if (isValid)
+                NetworkCredential = networkCredential;
+
+            var isSuccessful = !string.IsNullOrEmpty(NetworkCredential?.UserName) &&
+                               !string.IsNullOrEmpty(NetworkCredential?.Password);
+
+            return isSuccessful;
         }
 
         public void ClearPassword()
