@@ -6,12 +6,14 @@ namespace PropertySetterTest
 {
     public class Test
     {
+        private NetworkCredential _storage;
+
         private NetworkCredential _networkCredential;
         public NetworkCredential NetworkCredential
         {
             get
             {
-                _networkCredential = Storage.NetworkCredential;
+                _networkCredential = _storage;
 
                 return _networkCredential;
             }
@@ -23,7 +25,7 @@ namespace PropertySetterTest
                 // INSERT BREAKPOINT HERE
                 _networkCredential = value;
 
-                Storage.NetworkCredential = _networkCredential;
+                _storage = _networkCredential;
             }
         }
 
