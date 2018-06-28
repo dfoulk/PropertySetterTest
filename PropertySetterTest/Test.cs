@@ -29,9 +29,9 @@ namespace PropertySetterTest
             }
         }
 
-        public async Task<bool> Run(NetworkCredential networkCredential = null)
+        public async Task<bool> Run()
         {
-            networkCredential = networkCredential ?? NetworkCredential;
+            var networkCredential = new NetworkCredential("TestUser", "TestPassword");
 
             await Task.Delay(TimeSpan.FromSeconds(1));
 

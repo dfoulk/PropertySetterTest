@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace PropertySetterTest
@@ -17,9 +16,7 @@ namespace PropertySetterTest
 
         private static async Task RunTest()
         {
-            var networkCredential = new NetworkCredential("TestUser", "TestPassword");
-
-            var result = await Test.Run(networkCredential);
+            var result = await Test.Run();
 
             Console.WriteLine($"Test Result: {result}");
 
