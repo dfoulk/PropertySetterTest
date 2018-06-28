@@ -1,48 +1,45 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace PropertySetterTest
 {
     public class Test
     {
-        private NetworkCredential _storage;
+        private string _storage;
 
-        private NetworkCredential _networkCredential;
-        public NetworkCredential NetworkCredential
+        private string _string;
+        public string String
         {
             get
             {
-                _networkCredential = _storage;
+                _string = _storage;
 
-                return _networkCredential;
+                return _string;
             }
             protected set
             {
-                if (value == _networkCredential)
+                if (value == _string)
                     return;
 
                 // INSERT BREAKPOINT HERE
-                _networkCredential = value;
+                _string = value;
 
-                _storage = _networkCredential;
+                _storage = _string;
             }
         }
 
         public async Task<bool> Run()
         {
-            var networkCredential = new NetworkCredential("TestUser", "TestPassword");
+            var str = "Test";
 
             await Task.Delay(TimeSpan.FromSeconds(1));
 
-            var isValid = !string.IsNullOrEmpty(networkCredential?.UserName) &&
-                          !string.IsNullOrEmpty(networkCredential?.Password);
+            var isValid = !string.IsNullOrEmpty(str);
 
             if (isValid)
-                NetworkCredential = networkCredential;
+                String = str;
 
-            var isSuccessful = !string.IsNullOrEmpty(NetworkCredential?.UserName) &&
-                               !string.IsNullOrEmpty(NetworkCredential?.Password);
+            var isSuccessful = !string.IsNullOrEmpty(String);
 
             return isSuccessful;
         }
