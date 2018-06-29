@@ -2,11 +2,17 @@
 
 namespace PropertySetterTest
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var test = new Test();
+
+            var result = test.Run();
+
+            Console.WriteLine($"Test Result: {result}");
+
+            Console.ReadLine();
         }
     }
 }
