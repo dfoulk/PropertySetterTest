@@ -1,26 +1,14 @@
 ﻿using System;
-using System.Net;
-using System.Threading.Tasks;
-using Test;
 
 namespace PropertySetterTest
 {
     internal class Program
     {
-        public static Child Child { get; set; }
-
         private static void Main(string[] args)
         {
-            Child = new Child();
+            var test = new Test();
 
-            RunTest().Wait();
-        }
-
-        private static async Task RunTest()
-        {
-            var networkCredential = new NetworkCredential("TestUser", "TestPassword");
-
-            var result = await Child.Test(networkCredential);
+            var result = test.Run();
 
             Console.WriteLine($"Test Result: {result}");
 
