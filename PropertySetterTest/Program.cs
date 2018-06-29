@@ -4,13 +4,11 @@ namespace PropertySetterTest
 {
     internal class Program
     {
-        public static Test Test { get; set; }
-
         private static void Main(string[] args)
         {
-            Test = new Test();
+            var test = new Test();
 
-            var result = Test.Run();
+            var result = test.Run();
 
             Console.WriteLine($"Test Result: {result}");
 
