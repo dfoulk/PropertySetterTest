@@ -10,7 +10,7 @@ namespace PropertySetterTest
         {
             Test = new Test();
 
-            var result = Test.Run().Result;
+            var result = Test.Run();
 
             Console.WriteLine($"Test Result: {result}");
 

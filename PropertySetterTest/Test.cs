@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace PropertySetterTest
+﻿namespace PropertySetterTest
 {
     public class Test
     {
@@ -28,10 +25,8 @@ namespace PropertySetterTest
             }
         }
 
-        public async Task<bool> Run()
+        public bool Run()
         {
-            await Task.Delay(TimeSpan.FromSeconds(1));
-
             String = "Test";
 
             return !string.IsNullOrEmpty(String);
